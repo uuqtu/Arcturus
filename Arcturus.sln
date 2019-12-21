@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Arcturus.ConsoleExtensions"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Arcturus.Logging", "Arcturus.Logging\Arcturus.Logging.csproj", "{5FB77E7A-266C-41ED-969F-30D94DB289C3}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Arcturus.WinApi", "Arcturus.WinApi\Arcturus.WinApi.csproj", "{23674731-F14D-4FB2-ACEA-153854F93C2B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{5FB77E7A-266C-41ED-969F-30D94DB289C3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5FB77E7A-266C-41ED-969F-30D94DB289C3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5FB77E7A-266C-41ED-969F-30D94DB289C3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{23674731-F14D-4FB2-ACEA-153854F93C2B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{23674731-F14D-4FB2-ACEA-153854F93C2B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{23674731-F14D-4FB2-ACEA-153854F93C2B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{23674731-F14D-4FB2-ACEA-153854F93C2B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
