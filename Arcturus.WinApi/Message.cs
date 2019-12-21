@@ -9,92 +9,141 @@ namespace Arcturus.WinApi
 {
     public static class Message
     {
+        [DllImport("user32.dll", CharSet = CharSet.Auto)]
+        public static extern IntPtr GetActiveWindow();
+
         [DllImport("User32.dll", CharSet = CharSet.Unicode)]
         private static extern int MessageBox(IntPtr h, string m, string c, int type);
 
         public static void Information(string message, string caption)
         {
-            MessageBox((IntPtr)0, message, caption, 0);
+            try
+            {
+                MessageBox(GetActiveWindow(), message, caption, 0);
+            }
+            catch
+            {
+                MessageBox((IntPtr)0, message, caption, 0);
+            }
         }
 
         public static Result OkAbort(string message, string caption)
         {
-            var a = MessageBox((IntPtr)0, message, caption, 1);
-
-            if (a == 1)
-                return Result.Ok;
-            else
-                return Result.Abort;
+            try
+            {
+                var a = MessageBox(GetActiveWindow(), message, caption, 1);
+                return GetResult(a);
+            }
+            catch
+            {
+                var a = MessageBox((IntPtr)0, message, caption, 1);
+                return GetResult(a);
+            }
         }
 
         public static Result AbortRetryIgnore(string message, string caption)
         {
-            var a = MessageBox((IntPtr)0, message, caption, 2);
-
-            if (a == 3)
-                return Result.Abort;
-            else if (a == 4)
-                return Result.Retry;
-            else
-                return Result.Ignore;
+            try
+            {
+                var a = MessageBox(GetActiveWindow(), message, caption, 2);
+                return GetResult(a);
+            }
+            catch
+            {
+                var a = MessageBox((IntPtr)0, message, caption, 2);
+                return GetResult(a);
+            }
         }
 
         public static Result YesNoAbort(string message, string caption)
         {
-            var a = MessageBox((IntPtr)0, message, caption, 3);
-
-            if (a == 6)
-                return Result.Yes;
-            else if (a == 7)
-                return Result.No;
-            else
-                return Result.Abort;
+            try
+            {
+                var a = MessageBox(GetActiveWindow(), message, caption, 3);
+                return GetResult(a);
+            }
+            catch
+            {
+                var a = MessageBox((IntPtr)0, message, caption, 3);
+                return GetResult(a);
+            }
         }
 
         public static Result YesNo(string message, string caption)
         {
-            var a = MessageBox((IntPtr)0, message, caption, 4);
-
-            if (a == 6)
-                return Result.Yes;
-            else
-                return Result.No;
+            try
+            {
+                var a = MessageBox(GetActiveWindow(), message, caption, 4);
+                return GetResult(a);
+            }
+            catch
+            {
+                var a = MessageBox((IntPtr)0, message, caption, 4);
+                return GetResult(a);
+            }
         }
 
         public static Result RetryAbort(string message, string caption)
         {
-            var a = MessageBox((IntPtr)0, message, caption, 5);
-
-            if (a == 4)
-                return Result.Retry;
-            else
-                return Result.Abort;
+            try
+            {
+                var a = MessageBox(GetActiveWindow(), message, caption, 5);
+                return GetResult(a);
+            }
+            catch
+            {
+                var a = MessageBox((IntPtr)0, message, caption, 5);
+                return GetResult(a);
+            }
         }
 
         public static Result AbortRetryNext(string message, string caption)
         {
-            var a = MessageBox((IntPtr)0, message, caption, 6);
-
-            if (a == 2)
-                return Result.Abort;
-            else if (a == 10)
-                return Result.Retry;
-            else
-                return Result.Next;
+            try
+            {
+                var a = MessageBox(GetActiveWindow(), message, caption, 6);
+                return GetResult(a);
+            }
+            catch
+            {
+                var a = MessageBox((IntPtr)0, message, caption, 6);
+                return GetResult(a);
+            }
         }
 
         public enum Result
         {
             Ok,
             Abort,
+            Cancel,
             Retry,
             Ignore,
             Yes,
             No,
             Next,
+        }
 
-
-
+        private static Result GetResult(int val)
+        {
+            switch (val)
+            {
+                case 1:
+                    return Result.Ok;
+                case 2:
+                    return Result.Cancel;
+                case 3:
+                    return Result.Abort;
+                case 4:
+                    return Result.Retry;
+                case 5:
+                    return Result.Ignore;
+                case 6:
+                    return Result.Yes;
+                case 7:
+                    return Result.No;
+                default:
+                    return Result.No;
+            }
         }
     }
 }
