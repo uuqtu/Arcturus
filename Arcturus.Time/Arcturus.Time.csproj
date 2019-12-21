@@ -52,6 +52,7 @@
   <ItemGroup>
     <Compile Include="TimeFromTimeserver.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Weekend\WeekendDays.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Arcturus.Logging\Arcturus.Logging.csproj">
