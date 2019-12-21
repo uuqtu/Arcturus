@@ -10,7 +10,7 @@ namespace Arcturus.Time.Weekend
     {
         public static List<DateTime> GetWeekendDays(int year)
         {
-            var weekends = GetDaysBetween(new DateTime(1, 1, year), new DateTime(31, 12, year))
+            var weekends = GetDaysBetween(new DateTime(year, 1, 1), new DateTime(year, 12, 31))
                 .Where(d => d.DayOfWeek == DayOfWeek.Saturday || d.DayOfWeek == DayOfWeek.Sunday);
 
             return weekends.ToList();
