@@ -65,6 +65,10 @@
       <Project>{5fb77e7a-266c-41ed-969f-30d94db289c3}</Project>
       <Name>Arcturus.Logging</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Arcturus.WinApi\Arcturus.WinApi.csproj">
+      <Project>{23674731-f14d-4fb2-acea-153854f93c2b}</Project>
+      <Name>Arcturus.WinApi</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>

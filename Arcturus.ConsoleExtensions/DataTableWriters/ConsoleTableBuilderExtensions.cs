@@ -99,7 +99,7 @@ namespace Arcturus.ConsoleExtensions.DataTableWriters
             {
                 Exception ex = new Exception("Table has no rows");
                 Logger.Error(ex, "Die Datatable zur Anzeige enthielt keine Datensätze.");
-                throw ex;
+                Arcturus.WinApi.Message.Information("Die zugrundeliegende Quell-Daten des Data-Grids haben keine Zeilen.", "ConsoleTableBuilderExtensions");
             }
 
             var numberOfColumns = builder.Rows.Max(x => x.Count);
