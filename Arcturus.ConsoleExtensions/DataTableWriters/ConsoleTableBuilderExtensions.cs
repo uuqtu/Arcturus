@@ -1,13 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
 namespace Arcturus.ConsoleExtensions.DataTableWriters
-{ 
+{
     public static class ConsoleTableBuilderExtensions
     {
         private static readonly NLog.Logger Logger = NLog.LogManager.GetCurrentClassLogger();
@@ -93,13 +94,14 @@ namespace Arcturus.ConsoleExtensions.DataTableWriters
             return builder;
         }
 
-        public static StringBuilder Export(this ConsoleTableBuilder builder)
+        public static StringBuilder Export(this ConsoleTableBuilder builder, out Exception ex)
         {
             if (!builder.Rows.Any())
             {
-                Exception ex = new Exception("Table has no rows");
+                ex = new Exception("Table has no rows");
                 Logger.Error(ex, "Die Datatable zur Anzeige enthielt keine Datensätze.");
                 Arcturus.WinApi.Message.Information("Die zugrundeliegende Quell-Daten des Data-Grids haben keine Zeilen.", "ConsoleTableBuilderExtensions");
+                return new StringBuilder();
             }
 
             var numberOfColumns = builder.Rows.Max(x => x.Count);
@@ -133,6 +135,8 @@ namespace Arcturus.ConsoleExtensions.DataTableWriters
                 }
             }
 
+            ex = null;
+
             switch (builder.TableFormat)
             {
                 case ConsoleTableBuilderFormat.Default:
@@ -149,14 +153,20 @@ namespace Arcturus.ConsoleExtensions.DataTableWriters
             }
         }
 
-        public static void ExportAndWrite(this ConsoleTableBuilder builder)
+        public static StringBuilder ExportAndWrite(this ConsoleTableBuilder builder, out Exception ex)
         {
-            Console.Write(builder.Export());
+            ex = null;
+            Console.Write(builder.Export(out ex));
+            Debug.Write(builder.Export(out ex));
+            return builder.Export(out ex);
         }
 
-        public static void ExportAndWriteLine(this ConsoleTableBuilder builder)
+        public static StringBuilder ExportAndWriteLine(this ConsoleTableBuilder builder, out Exception ex)
         {
-            Console.WriteLine(builder.Export());
+            ex = null;
+            Console.WriteLine(builder.Export(out ex));
+            Debug.Write(builder.Export(out ex));
+            return builder.Export(out ex);
         }
 
         private static StringBuilder CreateTableForDefaultFormat(ConsoleTableBuilder builder)
