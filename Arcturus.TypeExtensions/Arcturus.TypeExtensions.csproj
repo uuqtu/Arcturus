@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{D48E26E8-6451-49AF-B3FB-6F8BEBE762DF}</ProjectGuid>
+    <ProjectGuid>{D4B0766D-96A8-4E4A-8882-7104D535B38B}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Arcturus.Time</RootNamespace>
-    <AssemblyName>Arcturus.Time</AssemblyName>
+    <RootNamespace>Arcturus.TypeExtensions</RootNamespace>
+    <AssemblyName>Arcturus.TypeExtensions</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
@@ -29,19 +29,11 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <DocumentationFile>bin\Release\Arcturus.Time.xml</DocumentationFile>
+    <DocumentationFile>bin\Release\Arcturus.TypeExtensions.xml</DocumentationFile>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="NLog, Version=4.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c, processorArchitecture=MSIL">
-      <HintPath>..\packages\NLog.4.6.8\lib\net45\NLog.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
-    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
-    <Reference Include="System.IO.Compression" />
-    <Reference Include="System.Runtime.Serialization" />
-    <Reference Include="System.ServiceModel" />
-    <Reference Include="System.Transactions" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -50,25 +42,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="TimeFromTimeserver.cs" />
+    <Compile Include="DateTime.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="TimeOfDay\Date.cs" />
-    <Compile Include="TimeOfDay\TimeOfDay.cs" />
-    <Compile Include="Weekend\WeekendDays.cs" />
-    <Compile Include="Years\YearsSinceDate.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Arcturus.Logging\Arcturus.Logging.csproj">
-      <Project>{5fb77e7a-266c-41ed-969f-30d94db289c3}</Project>
-      <Name>Arcturus.Logging</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Arcturus.WinApi\Arcturus.WinApi.csproj">
-      <Project>{23674731-f14d-4fb2-acea-153854f93c2b}</Project>
-      <Name>Arcturus.WinApi</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
